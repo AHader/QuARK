@@ -16,7 +16,7 @@ defaultEntryPoints = ["http", "https"]
 # Enable ACME (Let's Encrypt): automatic SSL
 [acme]
 # Email address used for registration
-email = "noreply@whoopened.com"
+email = "info@quidditch.at"
 storage = "/etc/traefik/acme/acme.json"
 entryPoint = "https"
 onDemand = false
@@ -32,17 +32,10 @@ OnHostRule = true
       url = "http://django:5000"
 
 [frontends]
-  [frontends.doc4]
-    backend = "django"
-    passHostHeader = true
-    [frontends.doc4.headers]
-      HostsProxyHeaders = ['X-CSRFToken']
-    [frontends.doc4.routes.dr1]
-      rule = "Host:doc4.cloud"
   [frontends.django]
     backend = "django"
     passHostHeader = true
     [frontends.django.headers]
       HostsProxyHeaders = ['X-CSRFToken']
     [frontends.django.routes.dr1]
-      rule = "Host:whoopened.com"
+      rule = "Host:quidditch.at"

@@ -9,6 +9,3 @@ Collectfast==0.6.2  # https://github.com/antonagestam/collectfast
 # Django
 # ------------------------------------------------------------------------------
 django-anymail[mailgun]==6.0.1  # https://github.com/anymail/django-anymail
-
-# Sentry
-sentry-sdk==0.12.2
