@@ -72,14 +72,18 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "django_celery_beat",
-    "netfields",
+    'sass_processor',
+
+    'multiselectfield',
+    'django_countries',
+    'termsandconditions',
+    'imagefield',
 ]
 
 LOCAL_APPS = [
     "apps.users.apps.UsersConfig",
     # Your stuff: custom apps go here
-    "apps.documents.apps.DocumentsConfig",
-    "apps.lookup.apps.LookupConfig",
+
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -143,6 +147,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'termsandconditions.middleware.TermsAndConditionsRedirectMiddleware',
 ]
 
 # STATIC
@@ -157,12 +162,18 @@ STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    'sass_processor.finders.CssFinder',
+]
+# "Therefore it is a good idea to otherwise use SASS_PROCESSOR_ROOT = STATIC_ROOT in your settings.py."
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    str(APPS_DIR.path("static/sass")),
 ]
 
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR("media"))
+MEDIA_ROOT = str(APPS_DIR.path("media"))
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
 
@@ -227,7 +238,7 @@ EMAIL_BACKEND = env(
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""CodeWerft""", "Brandl@users.noreply.github.com")]
+ADMINS = [("""J3""", "Brandl@users.noreply.github.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -282,7 +293,7 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -291,6 +302,10 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "apps.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "apps.users.adapters.SocialAccountAdapter"
+# No Username
+ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_FORMS = {'signup': 'apps.users.forms.CustomSignupForm'}
 
 # Twilio
 # ------------------------------------------------------------------------------

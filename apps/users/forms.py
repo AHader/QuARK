@@ -1,4 +1,6 @@
 from django.contrib.auth import get_user_model, forms
+from django.forms import ModelForm, DateInput
+from allauth.account.forms import SignupForm
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,20 +13,26 @@ class UserChangeForm(forms.UserChangeForm):
 
 
 class UserCreationForm(forms.UserCreationForm):
-
-    error_message = forms.UserCreationForm.error_messages.update(
-        {"duplicate_username": _("This username has already been taken.")}
-    )
-
     class Meta(forms.UserCreationForm.Meta):
         model = User
 
-    def clean_username(self):
-        username = self.cleaned_data["username"]
 
-        try:
-            User.objects.get(username=username)
-        except User.DoesNotExist:
-            return username
+class CustomSignupForm(ModelForm,SignupForm):
+    class Meta:
+        model = get_user_model()
+        fields = ["first_name", "last_name", "birthdate", "citizenship", "gender", "positions", "certifications"]
+        widgets = {
+            'birthdate': DateInput(attrs={'type': 'date'})
+        }
 
-        raise ValidationError(self.error_messages["duplicate_username"])
+    def custom_signup(self, request, user):
+        user = super(CustomSignupForm, self).save(request)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.birthdate = self.cleaned_data['birthdate']
+        user.citizenship = self.cleaned_data['citizenship']
+        user.gender = self.cleaned_data['gender']
+        user.positions = self.cleaned_data['positions']
+        user.certifications = self.cleaned_data['certifications']
+        user.save()
+        return user

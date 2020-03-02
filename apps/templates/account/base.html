@@ -1,46 +1,106 @@
 {% extends 'base_landing.html' %}
-
 {% load static bulma_tags %}
 
-{% block content_area %}
-<div class="login-wrapper columns is-gapless">
+{% block header %}
 
-            <!-- Form section -->
-            <div class="column is-7">
-                <div class="hero is-fullheight">
-                    <div class="hero-body">
-                        <div class="container">
-                            <div class="columns">
-                                <div class="column"></div>
-                                <div class="column is-7">
-                                    <!-- Login Form -->
-				      {% block content_title %}{% endblock content_title %}
-				      {% block content %}{% endblock content %}
-                               </div>
-                                <div class="column"></div>
-                            </div>
+    <!-- Hero (Parallax) and nav -->
+    <div class="hero parallax is-cover is-relative is-default is-bold"
+         data-background="{% static 'landing/images/banner/germany.jpg' %}" data-color="#000" data-color-opacity="0.3">
+
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+            <div class="container">
+                <!-- Brand -->
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <img class="light-logo" src="{% static 'landing/images/logos/qat-white.svg' %}" alt="">
+                        <img class="dark-logo" src="{% static 'landing/images/logos/qat-red.svg' %}" alt="">
+                    </a>
+
+                    <!-- Responsive toggle -->
+                    <div class="custom-burger" data-target="">
+                        <a id="" class="responsive-btn" href="javascript:void(0);">
+                                <span class="menu-toggle">
+                                    <span class="icon-box-toggle">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <!-- /Responsive toggle -->
+                </div>
+
+                <!-- Navbar menu -->
+                <div class="navbar-menu">
+                    <!-- Navbar Start -->
+
+                    <div class="navbar-start">
+                        <a class="navbar-item is-slide" href="/">
+                            Quidditch Austria
+                        </a>
+                        <!--
+                                <a class="navbar-item is-slide" href="agency-about.html">
+                                    About
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-portfolio.html">
+                                    Portfolio
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-blog.html">
+                                    Blog
+                                </a>-->
+
+                    </div>
+
+                    <!-- Navbar end -->
+                    <div class="navbar-end">
+                        <!-- Signup button -->
+                        <div class="navbar-item">
+                            <a id="#signup-btn" href="contact.html"
+                               class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                                Kontakt
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /Form section -->
+        </nav>
 
-            <!-- Image section (hidden on mobile) -->
-            <div class="column login-column is-5 is-hidden-mobile hero-banner">
-                <div class="hero is-fullheight is-theme-secondary is-relative">
-                    <div class="columns has-text-centered">
-                        <div class="column">
-                            <h2 class="title is-2 light-text">
-                                Start tracking now
-                            </h2>
-                            <h3 class="subtitle is-5 light-text">
-                                Try our data loss prevention solutions and never loose your key assets again.
-                            </h3>
-                        </div>
+        <!-- Hero image -->
+        <div id="main-hero" class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <div class="column is-6 is-offset-3 has-text-centered is-header-caption subpage-title">
+                            {% block content_title %}{% endblock content_title %}
                     </div>
-                    <img class="login-city" src="{% static 'images/illustrations/drawings/learn.svg' %}" alt="">
                 </div>
             </div>
-            <!-- /Image section -->
         </div>
+        <!-- /Hero image -->
+    </div>
+    <!-- /Hero and nav -->
+
+{% endblock header %}
+
+{% block content_area %}
+
+    <!-- Blog post list section -->
+    <section class="section is-medium blog-section section-light-grey">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    <!-- Blog post -->
+                    <div class="flex-card is-post is-pulled-top light-bordered" style="padding: 10px">
+
+                        {% block content %}{% endblock content %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% endblock content_area %}

@@ -1,1 +1,401 @@
 {% extends "base_landing.html" %}
+{% load static bulma_tags %}
+
+{% block title %}Home{% endblock title %}
+
+{% block header %}
+    <!-- Hero and nav -->
+    <div class="hero is-cover is-relative is-fullheight is-default is-bold">
+
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+            <div class="container">
+                <!-- Brand -->
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <img class="light-logo" src="{% static 'landing/images/logos/qat-white.svg' %}" alt="">
+                        <img class="dark-logo" src="{% static 'landing/images/logos/qat-red.svg' %}" alt="">
+                    </a>
+
+                    <!-- Responsive toggle -->
+                    <div class="custom-burger" data-target="">
+                        <a id="" class="responsive-btn" href="javascript:void(0);">
+                                <span class="menu-toggle">
+                                    <span class="icon-box-toggle">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <!-- /Responsive toggle -->
+                </div>
+
+                <!-- Navbar menu -->
+                <div class="navbar-menu">
+                    <!-- Navbar Start -->
+
+                    <div class="navbar-start">
+                        <a class="navbar-item is-slide" href="/">
+                            Quidditch Austria
+                        </a>
+                        <!--
+                                <a class="navbar-item is-slide" href="agency-about.html">
+                                    About
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-portfolio.html">
+                                    Portfolio
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-blog.html">
+                                    Blog
+                                </a>-->
+
+                    </div>
+
+                    <!-- Navbar end -->
+                    <div class="navbar-end">
+                        <!-- Signup button -->
+                        <div class="navbar-item">
+                            <a id="#signup-btn" href="{% url 'about' %}"
+                               class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                                Kontakt
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Wallop Slider -->
+        <div class="Wallop Wallop--scale">
+            <div class="Wallop-list">
+                <!-- Slide -->
+                <div class="Wallop-item Wallop-item--current has-background-image" data-background="{% static 'landing/images/banner/landing1.jpg' %}">
+                    <div class="Wallop-overlay"></div>
+                    <div class="Wallop-caption-wrapper">
+                        <div class="Wallop-caption is-centered">
+                            <div class="main-inner">
+                                <h1>Wir sind Quidditch Austria</h1>
+                            </div>
+                            <div>
+                                <h4>Als Dachverband des österreichischen Quidditch Sports, bringen wir Quidditch weiter!</h4>
+                            </div>
+                            <div class="caption-action">
+                                <a href="#services" class="button button-cta btn-align light-btn btn-outlined is-bold rounded">Unsere Services</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide -->
+                <div class="Wallop-item has-background-image" data-background="{% static 'landing/images/banner/landing2.jpg' %}">
+                    <div class="Wallop-overlay"></div>
+                    <div class="Wallop-caption-wrapper">
+                        <div class="Wallop-caption is-centered">
+                            <div class="main-inner">
+                                <h1>Do möchtest Quidditch kennenlernen?</h1>
+                            </div>
+                            <div>
+                                <h4>Mit Mannschaften über ganz Österreich verteilt findest du Quidditch auch in deiner Nähe!</h4>
+                            </div>
+                            <div class="caption-action">
+                                <a href="#teams" class="button button-cta btn-align light-btn btn-outlined is-bold rounded">Teams</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide -->
+                <div class="Wallop-item has-background-image" data-background="{% static 'landing/images/banner/landing3.jpg' %}">
+                    <div class="Wallop-overlay"></div>
+                    <div class="Wallop-caption-wrapper">
+                        <div class="Wallop-caption is-centered">
+                            <div class="main-inner">
+                                <h1>Selbst ein Team gründen?</h1>
+                            </div>
+                            <div>
+                                <h4>Quidditch Austria hilft dir bei der Gründung deines eigenen Quidditch Teams!</h4>
+                            </div>
+                            <div class="caption-action">
+                                <a href="#starting" class="button button-cta btn-align light-btn btn-outlined is-bold rounded">Zur Teamgründung</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination dots -->
+            <div class="Wallop-pagination">
+                <button class="Wallop-dot Wallop-dot--current">go to item 1</button>
+                <button class="Wallop-dot">go to item 2</button>
+                <button class="Wallop-dot">go to item 3</button>
+            </div>
+            <!-- Navigation arrows -->
+            <button class="Wallop-buttonPrevious is-hidden-mobile"><i class="material-icons">arrow_back</i></button>
+            <button class="Wallop-buttonNext is-hidden-mobile"><i class="material-icons">arrow_forward</i></button>
+        </div>
+        <!-- /Hero Wallop Slider -->
+    </div>
+{% endblock header %}
+
+{% block content %}
+        <!-- About section -->
+        <section id="services" class="section is-medium section-feature-grey">
+            <div class="container">
+                <div class="centered-title">
+                    <h2>Lern uns kennen</h2>
+                    <div class="title-divider"></div>
+                    <div class="subheading">
+                        Was macht Quidditch Austria überhaupt?
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="columns">
+                        <!-- Content -->
+                        <div class="column is-4">
+                            <div class="service-box">
+                                <h2 class="service-title">Vereinszweck</h2>
+                                <div class="title-divider"></div>
+                                <p>Der Verein, dessen Tätigkeit nicht auf Gewinn gerichtet ist, bezweckt die Förderung der körperlichen und geistigen Leistungsfähigkeit seiner Mitglieder durch Pflege des Sports Quidditch, sowie die Verbreitung und Förderung des Sports in Österreich. Weiters bekennt sich der Verein zum Gedanken der Völkerverständigung, sowie der Förderung einer Gemeinschaft der Toleranz und des Respekts.</p>
+                                <div class="action">
+                                    <a class="button btn-align button-cta btn-outlined raised rounded primary-btn is-bold">Mehr über uns</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Icons -->
+                        <div class="column is-7 is-offset-1">
+                            <div class="columns is-vcentered is-multiline">
+                                <!-- Icon block -->
+                                <div class="column is-6">
+                                    <div class="agency-icon-box">
+                                        <div class="is-icon-reveal">
+                                            <i class="im im-icon-Megaphone"></i>
+                                        </div>
+                                        <div class="box-title">Sport Entwicklung</div>
+                                        <p class="box-content">Wir haben uns zum Ziel gesetzt Quidditch in Österreich als bekannte Randsportart zu etablieren und allen den Einstieg in die Sportart zu ermöglichen</p>
+                                    </div>
+                                </div>
+                                <!-- Icon block -->
+                                <div class="column is-6">
+                                    <div class="agency-icon-box">
+                                        <div class="is-icon-reveal">
+                                            <i class="im im-icon-Notepad"></i>
+                                        </div>
+                                        <div class="box-title">Spielbetrieb</div>
+                                        <p class="box-content">Quidditch Austria kümmert sich von den Grundlagen, wie die Herausgabe eines aktuellen Regelwerks, die Entwicklung von Schiedsrichtern bis hin zur Austragung.</p>
+                                    </div>
+                                </div>
+                                <!-- Icon block -->
+                                <div class="column is-6">
+                                    <div class="agency-icon-box">
+                                        <div class="is-icon-reveal">
+                                            <i class="im im-icon-Trophy"></i>
+                                        </div>
+                                        <div class="box-title">Sportveranstalter</div>
+                                        <p class="box-content">Wir fungieren koordinierende Stelle der Central European Quidditch League sowie Veranstalter von Turnieren wie dem Austrian Quidditch Cup und dem Danube Cup.</p>
+                                    </div>
+                                </div>
+                                <!-- Icon block -->
+                                <div class="column is-6">
+                                    <div class="agency-icon-box">
+                                        <div class="is-icon-reveal">
+                                            <i class="im im-icon-Globe"></i>
+                                        </div>
+                                        <div class="box-title">Nationale und Internationale Vernetzung</div>
+                                        <p class="box-content">Wir repräsentieren die Interessen des österreichischen Quidditch Sports innerhalb Österreichs, in Kooperation mit Nachbarländern und in internationalen Gremien.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Icons -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /About section -->
+
+        <!-- Portfolio -->
+        <section id="teams" class="section is-medium">
+            <div class="container">
+                <div class="centered-title">
+                    <h2>Teams in Österreich</h2>
+                    <div class="title-divider"></div>
+                    <div class="subheading">
+                        Finde ein Team in deiner Nähe!
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="portfolio">
+                        <div class="columns is-gapless">
+                            <!-- Portfolio item -->
+                            <div class="column is-4">
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/DD.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                Danube Direwolves | Wien
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Portfolio item -->
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/FFS.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                Fortress Falcons | Salzburg
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Portfolio item -->
+                            <div class="column is-4">
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/GG.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                Graz Grimms | Graz
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Portfolio item -->
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/SCS.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                Steelcity Snigets | Linz
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column is-4">
+                                <!-- Portfolio item -->
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/VV.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                Vienna Vanguards | Wien
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Portfolio item -->
+                                <div class="portfolio-item">
+                                    <img src="{% static 'landing/images/teams/NT.jpg' %}" alt="">
+                                    <div class="circle-overlay"></div>
+                                    <div class="project-info has-text-centered">
+                                        <div class="wrapper">
+                                            <div class="project-title">
+                                                National Team | QAT
+                                            </div>
+                                            <div class="project-link">
+                                                <a href="#">More information <i class="material-icons">keyboard_arrow_right</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Portfolio -->
+
+        <!-- Final CTA section -->
+        <section id="starting" class="section section-feature-grey is-medium">
+            <div class="container">
+                <div class="centered-title">
+                    <h2>Gründe ein Team</h2>
+                    <div class="title-divider"></div>
+                    <div class="subheading">
+                        Wir unterstützen dich bei der Gründung eines neuen Quidditch Teams!
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="columns services-cards is-vcentered">
+                        <!-- Card -->
+                        <div class="column is-one-third">
+                            <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
+                                <div class="card-icon">
+                                    <i class="im im-icon-Environmental-3"></i>
+                                </div>
+                                <div class="card-title">
+                                    <h4>Probetrainings</h4>
+                                </div>
+                                <div class="card-feature-description">
+                                    <span class="">Wisst nicht wo ihr anfangen sollt? Wir kommen mit Coaches und Equipment in deine Stadt!.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="column">
+                            <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
+                                <div class="card-icon">
+                                    <i class="im im-icon-Gears"></i>
+                                </div>
+                                <div class="card-title">
+                                    <h4>Expertise</h4>
+                                </div>
+                                <div class="card-feature-description">
+                                    <span class="">Wie baut man eigentlich Quidditch Hoops? Wie tackelt man richtig? Wir beantworten all deine Fragen.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                        <div class="column">
+                            <div class="feature-card card-md hover-inset has-text-centered mb-20 is-card-reveal">
+                                <div class="card-icon">
+                                    <i class="im im-icon-Life-Safer"></i>
+                                </div>
+                                <div class="card-title">
+                                    <h4>Hilfestellung</h4>
+                                </div>
+                                <div class="card-feature-description">
+                                    <span class="">Wir begleiten euer Team von der Gründung bis zu den Meisterschaften.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="centered-title pt-40">
+                    <a href="contact.html" class="button button-cta is-bold btn-align primary-btn btn-outlined rounded is-title-reveal">Ich möchte ein Team gründen</a>
+                </div>
+                <!-- /CTA -->
+            </div>
+        </section>
+        <!-- /Final CTA section -->
+
+    {% endblock content %}

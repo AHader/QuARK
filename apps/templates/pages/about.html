@@ -1,1 +1,147 @@
-{% extends "base.html" %}
+{% extends "base_landing.html" %}
+{% load static bulma_tags %}
+
+{% block title %}Home{% endblock title %}
+
+{% block header %}
+    <div class="hero parallax is-cover is-relative is-default is-bold" data-color="#000" data-color-opacity="0.3"
+         data-background="{% static 'landing/images/banner/contact.jpg' %}">
+
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+            <div class="container">
+                <!-- Brand -->
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <img class="light-logo" src="{% static 'landing/images/logos/qat-white.svg' %}" alt="">
+                        <img class="dark-logo" src="{% static 'landing/images/logos/qat-red.svg' %}" alt="">
+                    </a>
+
+                    <!-- Responsive toggle -->
+                    <div class="custom-burger" data-target="">
+                        <a id="" class="responsive-btn" href="javascript:void(0);">
+                                <span class="menu-toggle">
+                                    <span class="icon-box-toggle">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <!-- /Responsive toggle -->
+                </div>
+
+                <!-- Navbar menu -->
+                <div class="navbar-menu">
+                    <!-- Navbar Start -->
+
+                    <div class="navbar-start">
+                        <a class="navbar-item is-slide" href="/">
+                            Quidditch Austria
+                        </a>
+                        <!--
+                                <a class="navbar-item is-slide" href="agency-about.html">
+                                    About
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-portfolio.html">
+                                    Portfolio
+                                </a>
+                                <a class="navbar-item is-slide" href="agency-blog.html">
+                                    Blog
+                                </a>-->
+
+                    </div>
+
+                    <!-- Navbar end -->
+                    <div class="navbar-end">
+                        <!-- Signup button -->
+                        <div class="navbar-item">
+                            <a id="#signup-btn" href="contact.html"
+                               class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                                Kontakt
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero image -->
+        <div id="main-hero" class="hero-body ">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <!-- Page Heading -->
+                    <div class="column is-6 is-offset-3 has-text-centered is-header-caption">
+                        <h1 class="title main-title subpage-title text-bold is-2">
+                            Kontakt
+                        </h1>
+                        <h2 class="subtitle is-4 light-text pt-20">
+                            Wenn du ein neues Team starten möchtest oder einfach nur eine Frage hast, wir sind für dich da.
+                        </h2>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Hero image -->
+    </div>
+    <!-- /Hero and nav -->
+{% endblock header %}
+
+
+{% block content %}
+<!-- Contact details section -->
+<div class="section is-medium">
+    <div class="container">
+        <div class="columns has-text-centered">
+            <div class="column is-hidden-mobile"></div>
+            <!-- Icon box -->
+            <div class="column is-3">
+                <div class="shadow-icon-box">
+                    <span><i class="fa fa-map fa-lg"></i></span>
+                </div>
+                <div class="shadow-title dark-text">
+                    Addresse
+                </div>
+                <div class="description shadow-description">
+                    <b>Quidditch Austria - Österreichischer Quidditch Verband
+                        <br>1230 Wien, Steinergasse 12</b>
+                </div>
+            </div>
+            <!-- Icon box -->
+            <div class="column is-3">
+                <div class="shadow-icon-box">
+                    <span><i class="fa fa-envelope fa-lg"></i></span>
+                </div>
+                <div class="shadow-title dark-text">
+                    Email
+                </div>
+                <div class="description shadow-description">
+                    <b>info @ quidditch.at</b>
+                    <br>
+                </div>
+            </div>
+            <!-- Icon box -->
+            <div class="column is-3">
+                <div class="shadow-icon-box">
+                    <span><i class="fa fa-phone-square fa-lg"></i></span>
+                </div>
+                <div class="shadow-title dark-text">
+                    Telefonnummer
+                </div>
+                <div class="description shadow-description">
+                    <b>Folgt in Kürze</b>
+                    <br>
+                </div>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+        </div>
+    </div>
+</div>
+<!-- /Contact details section -->
+
+
+
+{% endblock content %}

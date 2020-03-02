@@ -23,6 +23,8 @@ urlpatterns = [
     # User management
     path("users/", include("apps.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    # Terms and Conditions
+    path("terms/", include('termsandconditions.urls')),
     # Your stuff: custom urls includes go here
     #path("api/", include((router.urls, 'quark_api'), namespace='api')),
     path("docs/", include_docs_urls(title='API DOCs'))

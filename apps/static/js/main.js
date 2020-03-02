@@ -13,7 +13,7 @@ $(document).ready(function ($) {
         $(this).attr('href', 'javascript:void(0);');
     })
 
-    
+
 
     //Mobile menu toggle
     if ($('.custom-burger').length) {
@@ -130,7 +130,7 @@ $(document).ready(function ($) {
         $('[data-toggle="tooltip"]').ggtooltip();
     }
 
-    //Responsive toggle 
+    //Responsive toggle
     $('.custom-burger').on('click', function () {
         $(this).find('.icon-box-toggle').toggleClass('active');
     })
@@ -385,9 +385,9 @@ $(document).ready(function ($) {
     })
 
     //Preloader
-    $(window).on('load', function () { // makes sure the whole site is loaded 
-        $('#status').fadeOut(); // will first fade out the loading animation 
-        $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website. 
+    $(window).on('load', function () { // makes sure the whole site is loaded
+        $('#status').fadeOut(); // will first fade out the loading animation
+        $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
         $('body').delay(350).css({ 'overflow': 'visible' });
     })
 

@@ -1,43 +1,43 @@
-{% load static bulma_tags %}
+{% load static bulma_tags sass_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicons/favicon.ico' %}"/>
-  <title>{% block title %}{% endblock title %}</title>
-  {% block css %}
-    {% font_awesome %}
-    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/dashkit.css' %}">
-    <link rel="stylesheet" href="{% static 'css/icons.min.css' %}">
-    <style>.main-menu .main-menu-inner .main-logo img { width: 64px; height: 64px;}</style>
-    {% block extra_css %}{% endblock extra_css %}
-  {% endblock css %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicons/favicon.ico' %}"/>
+    <title>{% block title %}{% endblock title %}</title>
+    {% block css %}
+        {% font_awesome %}
+        <link href="{% sass_src 'sass/dashboard.scss' %}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/icons.min.css' %}">
+        <style>.main-menu .main-menu-inner .main-logo img {
+            width: 64px;
+            height: 64px;
+        }</style>
+        {% block extra_css %}{% endblock extra_css %}
+    {% endblock css %}
 </head>
 <body>
 
 {% block header %}
-<nav class="main-menu  is-dark">
+    <nav class="main-menu  is-dark">
         <div class="main-menu-inner">
-    
+
             <!-- Side icon menu -->
             <ul>
                 <li class="main-logo">
-                   <a href="/"><img src="{% static 'images/logos/icon_transparent.png' %}" alt=""></a>
+                    <a href="/"><img src="{% static 'images/logos/icon_transparent.png' %}" alt=""></a>
                 </li>
-                <li class="side-icon" data-child-menu="documents-menu">
-		              <a href="{% url 'documents:list' %}"><i class="sl sl-icon-docs"></i></a>
-                </li>
+
                 <li class="side-icon" data-child-menu="settings-menu">
-			            <a href="{% url 'users:detail' request.user.username %}"><i class="sl sl-icon-settings"></i></a>
+                    <a href="{% url 'users:detail' request.user.id %}"><i class="sl sl-icon-settings"></i></a>
                 </li>
             </ul>
             <!-- /Side icon menu -->
         </div>
     </nav>
-    
-<!-- /Main sidebar menu -->    <!-- Child push sidebar menu -->
+
+    <!-- /Main sidebar menu -->    <!-- Child push sidebar menu -->
     <nav class="child-menu">
         <div class="child-menu-inner">
             <!-- Child menu header -->
@@ -56,7 +56,7 @@
                 </li>
             </ul>
             <!-- /Child menu header -->
-    
+
             <!-- Sidebar menu 1 -->
             <ul id="dashboard-menu" class="sidebar-menu is-active animated preFadeInRIght fadeInRight">
                 <li class="have-children"><a class="parent-link" href="#"><span class="material-icons">dashboard</span>Dashboard</a>
@@ -66,26 +66,30 @@
                         <li><a href="dashboard-login.html">Login page</a></li>
                     </ul>
                 </li>
-                <li class="have-children"><a class="parent-link" href="#"><span class="material-icons">insert_chart</span>Analytics</a>
+                <li class="have-children"><a class="parent-link" href="#"><span
+                        class="material-icons">insert_chart</span>Analytics</a>
                     <ul>
                         <li><a href="dashboard-chartjs.html">Chart js</a></li>
                         <li><a href="dashboard-billboardjs.html">Billboard js</a></li>
                         <li><a href="dashboard-peityjs.html">Peity js</a></li>
                     </ul>
                 </li>
-                <li class="have-children"><a class="parent-link" href="#"><span class="material-icons">developer_board</span>Widgets</a>
+                <li class="have-children"><a class="parent-link" href="#"><span
+                        class="material-icons">developer_board</span>Widgets</a>
                     <ul>
                         <li><a href="dashboard-widgets-data.html">Data widgets</a></li>
                         <li><a href="dashboard-widgets-social.html">Social widgets</a></li>
                     </ul>
                 </li>
-                <li class="have-children"><a class="parent-link" href="#"><span class="material-icons">view_agenda</span>Feed</a>
+                <li class="have-children"><a class="parent-link" href="#"><span
+                        class="material-icons">view_agenda</span>Feed</a>
                     <ul>
                         <li><a href="dashboard-feed.html">Social feed</a></li>
                         <li><a href="dashboard-feed-post.html">Post Item</a></li>
                     </ul>
                 </li>
-                <li class="have-children"><a class="parent-link" href="#"><span class="material-icons">invert_colors</span>Styles</a>
+                <li class="have-children"><a class="parent-link" href="#"><span
+                        class="material-icons">invert_colors</span>Styles</a>
                     <ul>
                         <li><a href="/">Light sidebar</a></li>
                         <li><a href="dashboard-dark-nav.html">Dark sidebar</a></li>
@@ -93,155 +97,158 @@
                 </li>
             </ul>
             <!-- /Sidebar menu 1 -->
-             </div>
+        </div>
     </nav>
-    <!-- /Child push sidebar menu -->     
-    
+    <!-- /Child push sidebar menu -->
+
 {% endblock header %}
 
-        <!-- Top Navbar -->
-    <nav class="navbar dashboard-nav has-shadow">
-        <div class="container is-fluid">
-            <!-- Nav left -->
-            <div class="navbar-brand">
-                                <!-- Reader mode switch -->
-                <div class="navbar-item reader-switch is-hidden-desktop is-hidden-tablet">
-                    <div class="field">
-                        <input id="reader-mode-switch" type="checkbox" name="reader-mode-switch" class="switch is-outlined is-primary is-small">
-                        <label id="reader-mode-toggle" for="reader-mode-switch"></label>
-                    </div>
+<!-- Top Navbar -->
+<nav class="navbar dashboard-nav has-shadow">
+    <div class="container is-fluid">
+        <!-- Nav left -->
+        <div class="navbar-brand">
+            <!-- Reader mode switch -->
+            <div class="navbar-item reader-switch is-hidden-desktop is-hidden-tablet">
+                <div class="field">
+                    <input id="reader-mode-switch" type="checkbox" name="reader-mode-switch"
+                           class="switch is-outlined is-primary is-small">
+                    <label id="reader-mode-toggle" for="reader-mode-switch"></label>
                 </div>
-                <!-- Reader mode switch -->
             </div>
-            <!-- /Nav left -->
-    
-            <!-- Nav right -->
-            <div class="navbar-menu">
-                <div class="navbar-end">
-    
-                    <!-- Notifications dropdown (hidden on mobile) -->
-                    <div class="navbar-item drop-pop is-centered nav-icon">
-                        <a href="#" class="nav-inner">
-                            <i class="sl sl-icon-bell"><span class="new-circle gelatine"></span></i>
-                        </a>
-                        <div class="drop-wrapper notifications-drop">
-                            <div class="drop-inner has-arrow">
-                                <div class="notifications-header has-text-left">
-                                    <h3>Notifications</h3>
-                                </div>
-                                <div class="notifications-body">
-                                    <ul class="notifications-list">
-                                        <li>
-                                            <i class="sl sl-icon-heart red"></i>
-                                            <div class="notification-content">
-                                                <img src="https://via.placeholder.com/250x250" alt=""
-                                                    data-demo-src="assets/images/avatars/henry.jpg">
-                                                <div class="notification-text">
-                                                    <div class="text">
-                                                        <b>Henry</b> liked your <b>comment</b>.
-                                                    </div>
-                                                    <div class="timestamp">
-                                                        23 minutes ago
-                                                    </div>
+            <!-- Reader mode switch -->
+        </div>
+        <!-- /Nav left -->
+
+        <!-- Nav right -->
+        <div class="navbar-menu">
+            <div class="navbar-end">
+
+                <!-- Notifications dropdown (hidden on mobile) -->
+                <div class="navbar-item drop-pop is-centered nav-icon">
+                    <a href="#" class="nav-inner">
+                        <i class="sl sl-icon-bell"><span class="new-circle gelatine"></span></i>
+                    </a>
+                    <div class="drop-wrapper notifications-drop">
+                        <div class="drop-inner has-arrow">
+                            <div class="notifications-header has-text-left">
+                                <h3>Notifications</h3>
+                            </div>
+                            <div class="notifications-body">
+                                <ul class="notifications-list">
+                                    <li>
+                                        <i class="sl sl-icon-heart red"></i>
+                                        <div class="notification-content">
+                                            <img src="https://via.placeholder.com/250x250" alt=""
+                                                 data-demo-src="assets/images/avatars/henry.jpg">
+                                            <div class="notification-text">
+                                                <div class="text">
+                                                    <b>Henry</b> liked your <b>comment</b>.
+                                                </div>
+                                                <div class="timestamp">
+                                                    23 minutes ago
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <i class="sl sl-icon-check"></i>
-                                            <div class="notification-content">
-                                                <img src="https://via.placeholder.com/250x250" alt=""
-                                                    data-demo-src="assets/images/avatars/carolin.png">
-                                                <div class="notification-text">
-                                                    <div class="text">
-                                                        <b>Marjory</b> followed you.
-                                                    </div>
-                                                    <div class="timestamp">
-                                                        1 hour ago
-                                                    </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="sl sl-icon-check"></i>
+                                        <div class="notification-content">
+                                            <img src="https://via.placeholder.com/250x250" alt=""
+                                                 data-demo-src="assets/images/avatars/carolin.png">
+                                            <div class="notification-text">
+                                                <div class="text">
+                                                    <b>Marjory</b> followed you.
+                                                </div>
+                                                <div class="timestamp">
+                                                    1 hour ago
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <i class="sl sl-icon-heart"></i>
-                                            <div class="notification-content">
-                                                <img src="https://via.placeholder.com/250x250" alt=""
-                                                    data-demo-src="assets/images/avatars/marc.jpg">
-                                                <div class="notification-text">
-                                                    <div class="text">
-                                                        <b>Marc</b> commented one of your tasks.
-                                                    </div>
-                                                    <div class="timestamp">
-                                                        Yesterday
-                                                    </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="sl sl-icon-heart"></i>
+                                        <div class="notification-content">
+                                            <img src="https://via.placeholder.com/250x250" alt=""
+                                                 data-demo-src="assets/images/avatars/marc.jpg">
+                                            <div class="notification-text">
+                                                <div class="text">
+                                                    <b>Marc</b> commented one of your tasks.
+                                                </div>
+                                                <div class="timestamp">
+                                                    Yesterday
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- /Notifications dropdown -->
-			<!-- Logout button -->
-			<a href="{% url 'account_logout' %}"><div class="navbar-item nav-icon logout-button">
-			    <i class="sl sl-icon-power"></i>
-			</div></a>
-			<!-- /Logout button -->
-	    
-		</div>
-            </div>
-            <!-- /Nav right -->
-        </div>
-    </nav>
-    <!-- /Top Navbar -->  
-
-
-    <!-- Main dashboard container -->
-    <div id="dashboard-wrapper" class="columns">
-        <div class="column"></div>
-        <div class="content column is-11">
-    
-            <!-- Dashboard Wrapper -->
-            <div class="dashboard-wrapper">
-    
-                <div class="columns">
-                    <div class="column">
-                        <!-- Main content -->
-                        <div id="main-dashboard" class="section-wrapper">
-                            <!-- Dashboard content -->
-				 {% block hero %}{% endblock hero %}
-
-			    {% block messages %}
-			      {% if messages %}
-				<div class="messages columns is-desktop">
-				  <div class="column is-12">
-				    {% for message in messages %}
-				      <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
-					<div class="message-body">{{ message }}</div>
-				      </div>
-				    {% endfor %}
-				  </div>
-				</div>
-			      {% endif %}
-			    {% endblock messages %}
-
-			    {% block content_area %}
-			      {% block content_title %}{% endblock content_title %}
-			      {% block content %}{% endblock content %}
-			    {% endblock content_area %}
-
-                            <!-- /Dashboard content -->
-                        </div>
-                        <!-- /Main content -->
-                    </div>
-                    <!-- /Main view -->
                 </div>
+                <!-- /Notifications dropdown -->
+                <!-- Logout button -->
+                <a href="{% url 'account_logout' %}">
+                    <div class="navbar-item nav-icon logout-button">
+                        <i class="sl sl-icon-power"></i>
+                    </div>
+                </a>
+                <!-- /Logout button -->
+
             </div>
-            <!-- /Dashboard Wrapper -->
         </div>
-        <div class="column">
-        </div>
+        <!-- /Nav right -->
     </div>
+</nav>
+<!-- /Top Navbar -->
+
+
+<!-- Main dashboard container -->
+<div id="dashboard-wrapper" class="columns">
+    <div class="column"></div>
+    <div class="content column is-11">
+
+        <!-- Dashboard Wrapper -->
+        <div class="dashboard-wrapper">
+
+            <div class="columns">
+                <div class="column">
+                    <!-- Main content -->
+                    <div id="main-dashboard" class="section-wrapper">
+                        <!-- Dashboard content -->
+                        {% block hero %}{% endblock hero %}
+
+                        {% block messages %}
+                            {% if messages %}
+                                <div class="messages columns is-desktop">
+                                    <div class="column is-12">
+                                        {% for message in messages %}
+                                            <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
+                                                <div class="message-body">{{ message }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endblock messages %}
+
+                        {% block content_area %}
+                            {% block content_title %}{% endblock content_title %}
+                            {% block content %}{% endblock content %}
+                        {% endblock content_area %}
+
+                        <!-- /Dashboard content -->
+                    </div>
+                    <!-- /Main content -->
+                </div>
+                <!-- /Main view -->
+            </div>
+        </div>
+        <!-- /Dashboard Wrapper -->
+    </div>
+    <div class="column">
+    </div>
+</div>
 
 {% block modal %}{% endblock modal %}
 
@@ -250,7 +257,7 @@
 {% endblock footer %}
 
 {% block javascript %}
-  {% block extra_javascript %}{% endblock extra_javascript %}
+    {% block extra_javascript %}{% endblock extra_javascript %}
 {% endblock javascript %}
 </body>
 </html>

@@ -2,337 +2,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <!-- Required Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Quidditch Austria - {% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/png" href="{% static 'landing/images/favicon.png' %}" />
 
-  <title>{% block title %}{% endblock title %}</title>
-  {% block css %}
-    {% font_awesome %}
-    <link rel="stylesheet" href="{% static 'bulma/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/core_blue.css' %}">
-    <link rel="stylesheet" href="{% static 'css/icons.min.css' %}">
-<style> .navbar-wrapper .navbar-brand img { height: 60px; max-height:60px } </style>
+    {% block css %}
+        <!--Core CSS -->
+        <link rel="stylesheet" href="{% static 'landing/css/bulma.css' %}">
+        <link rel="stylesheet" href="{% static 'landing/css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'landing/css/core_flashy.css' %}">
     {% block extra_css %}{% endblock extra_css %}
-  {% endblock css %}
+    {% endblock css %}
+
 </head>
 <body>
-        <div class="pageloader"></div>
-        <div class="infraloader is-active"></div>
-{% block content_area %}
-        <!-- Hero and Navbar -->
-        <div class="hero is-default is-bold is-fullheight">
+<div class="pageloader"></div>
+<div class="infraloader is-active"></div>
 
-            <!-- Navbar partial -->
-            <nav class="navbar navbar-wrapper is-cloned">
-                <div class="container">
-                    <!-- Brand -->
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="/">
-                            <img src="{% static 'images/logos/logo_transparent.png' %}" alt="">
-                        </a>
+
+{% block header %}
+
+{% endblock header %}
+
+{% block hero %}{% endblock hero %}
+
+{% block messages %}
+    {% if messages %}
+        <div class="messages columns is-desktop">
+            <div class="column is-12">
+                {% for message in messages %}
+                    <div class="message {% if message.tags %}is-{{ message.tags|bulma_message_tag }}{% endif %}">
+                        <div class="message-body">{{ message }}</div>
                     </div>
-
-                    <!-- Navbar menu -->
-                    <div id="is-cloned" class="navbar-menu">
-                        <!-- Navbar Start -->
-                        <div class="navbar-start">
-                            <!-- Dropdown -->{% comment %}
-
-                            <div class="navbar-item has-dropdown is-hoverable is-mega is-hidden-mobile">
-                                <div class="navbar-link">
-                                    Product
-                                </div>
-                                <div class="navbar-dropdown is-megamenu animated prefadeInUp fadeInUp" data-style="width: 18rem;">
-                                    <div class="mega-inner">
-                                        <div class="container">
-                                            <div class="columns">
-                                                <div class="column">
-                                                    <h2 class="title is-6 is-mega-menu-title">Project Management</h2>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Sidebar-Window"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Boards</small>
-                                                            </p>
-                                                            <p>Kanban Board</p>
-                                                        </div>
-                                                    </a>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Time-Window"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Productivity</small>
-                                                            </p>
-                                                            <p>Time Tracking</p>
-                                                        </div>
-                                                    </a>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Lock-Window"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Security</small>
-                                                            </p>
-                                                            <p>Access Rights</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="column">
-                                                    <h2 class="title is-6 is-mega-menu-title">Accounting</h2>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Bar-Chart"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Reporting</small>
-                                                            </p>
-                                                            <p>Custom Reports</p>
-                                                        </div>
-                                                    </a>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Financial"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Transactions</small>
-                                                            </p>
-                                                            <p>Currency Exchange</p>
-                                                        </div>
-                                                    </a>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Bank"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Transactions</small>
-                                                            </p>
-                                                            <p>Accounts</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="column">
-                                                    <h2 class="title is-6 is-mega-menu-title">Document Management</h2>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Folder-Archive"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Records Management</small>
-                                                            </p>
-                                                            <p>File Plan</p>
-                                                        </div>
-                                                    </a>
-                                                    <a class="navbar-item is-flex" href="landing-v4-features.html">
-                                                        <i class="im im-icon-Mail-Attachement"></i>
-                                                        <div class="navbar-content">
-                                                            <p>
-                                                                <small class="color-secondary">Emails</small>
-                                                            </p>
-                                                            <p>Attachments Extraction</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="column">
-                                                    <h2 class="title is-6 is-mega-menu-title">Get Started</h2>
-                                                    <p class="is-cta">This is a wonderful menu description item. It can be used as a CTA.</p>
-                                                    <p class="is-cta">
-                                                        <a href="landing-v4-features.html" class="button btn-align mega-btn secondary-btn">Learn more</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <hr class="navbar-divider">
-                                        <div class="navbar-item is-footer is-hidden-mobile">
-                                            <div class="navbar-content">
-                                                <div class="level is-mobile">
-                                                    <div class="level-left">
-                                                        <div class="level-item">
-                                                            <strong>Follow us</strong>
-                                                        </div>
-                                                    </div>
-                                                    <div class="level-right">
-                                                        <div class="level-item">
-                                                            <a class="social-link" href="#"><i class="fa fa-twitter"></i></a>
-                                                            <a class="social-link" href="#"><i class="fa fa-facebook"></i></a>
-                                                            <a class="social-link" href="#"><i class="fa fa-behance"></i></a>
-                                                            <a class="social-link" href="#"><i class="fa fa-github"></i></a>
-                                                            <a class="social-link" href="#"><i class="fa fa-tumblr"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="menu-image is-hidden-mobile">
-                                            <img src="{% static 'images/bg/shapes/megamenu-blue.svg' %}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                <!-- Navbar item -->
-                            <a class="navbar-item is-slide is-centered-tablet is-hidden-desktop is-hidden-tablet" href="landing-v4-features.html">
-                                Product
-                            </a>{% endcomment %}
-
-
-                        </div>
-
-                        <!-- Navbar end -->
-                        <div class="navbar-end">
-                            <!-- Navbar item -->
-                            <a class="navbar-item is-slide is-centered-tablet" href="/accounts/login/">
-                                Login
-                            </a>
-                            <!-- Signup button -->
-                            <div class="navbar-item is-button is-centered-tablet">
-                                <a id="#signup-btn-double" href="/accounts/signup/" class="button button-cta is-bold btn-align secondary-btn raised">
-                                    Sign up
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <nav class="navbar navbar-wrapper is-transparent is-static">
-                <div class="container">
-                    <!-- Brand -->
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="/">
-                            <img src="{% static 'images/logos/logo_transparent.png' %}" alt="">
-                        </a>
-                                   <!-- Responsive toggle -->
-                        <div class="custom-burger" data-target="is-static">
-                            <a class="responsive-btn" href="javascript:void(0);">
-                                <span class="menu-toggle">
-                                    <span class="icon-box-toggle">
-                                        <span class="rotate">
-                                            <i class="icon-line-top"></i>
-                                            <i class="icon-line-center"></i>
-                                            <i class="icon-line-bottom"></i>
-                                        </span>
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                        <!-- /Responsive toggle -->
-                    </div>
-
-                    <!-- Navbar menu -->
-                    <div id="is-static" class="navbar-menu">
-                        <!-- Navbar Start -->
-                        <div class="navbar-start">
-			</div>
-
-
-
-                        <!-- Navbar end -->
-                        <div class="navbar-end">
-                           <!-- Navbar item -->
-                            <a class="navbar-item is-slide is-centered-tablet" href="/accounts/login/">
-                                Login
-                            </a>
-                            <!-- Signup button -->
-                            <div class="navbar-item is-button is-centered-tablet">
-                                <a id="#signup-btn-double" href="/accounts/signup/" class="button button-cta is-bold btn-align secondary-btn raised">
-                                    Sign up
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Hero content -->
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns is-vcentered">
-                        <div class="column is-6">
-                            <figure class="">
-                                <img src="{% static 'images/illustrations/drawings/landing5-1.svg' %}" alt="">
-                            </figure>
-                        </div>
-                        <div class="column is-5 is-offset-1 is-hero-title">
-                            <h1 class="title is-1">
-                                Who opened my document?
-                            </h1>
-                            <h2 class="subtitle is-4">
-                                Track your digital assets
-                            </h2>
-                            <p class="">
-			    <a href="{% url 'account_signup' %}" class="button button-cta is-bold btn-align secondary-btn raised">
-                                    Get Started
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-
         </div>
-        <!-- /Hero and Navbar -->
+    {% endif %}
+{% endblock messages %}
 
+{% block content_area %}
+    {% block content_title %}{% endblock content_title %}
+    {% block content %}{% endblock content %}
+{% endblock content_area %}
 
-        <!-- Footer -->
-        <!-- Simple light footer -->
-        <footer class="footer footer-light-medium">
-            <div class="container">
-                <div class="columns">
-                    <!-- Column -->
-                    <div class="column is-4">
-                        <div class="pt-10 pb-10">
-                            <img style="max-width: 75%" src="{% static 'images/logos/bulkit-logo-g.png' %}" alt="">
-			</div>
+{% block modal %}{% endblock modal %}
+
+{% block footer %}
+
+    <!-- Dark footer -->
+    <footer id="dark-footer" class="footer footer-dark">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-header">
+                            <h3>Disclaimer</h3>
+                        </div>
+                        <div>Quidditch Austria and its activities are not licensed by, sponsored by or associated with Warner Bros., J.K. Rowling or their affiliates. ‘Quidditch,’ ‘Harry Potter’ and all related names, characters and indicia are trademarks of © Warner Bros. – Harry Potter publishing  rights © J.K. Rowling.</div>
                     </div>
-                    <!-- Column -->
-                    <div class="column is-6 is-offset-2">
-                        <div class="columns">
-                            <!-- Column -->
-                            <div class="column">
-                                <ul class="footer-column">
-                                    <li class="column-header">
-                                        Quidditch.at
-                                    </li>
-                                    <li class="column-item"><a href="#">Home</a></li>
-                                    <li class="column-item"><a href="#">Pricing</a></li>
-                                    <li class="column-item"><a href="#">Get started</a></li>
-                                    <li class="column-item"><a href="#">Help</a></li>
-                                </ul>
-                            </div>
-                            <!-- Column -->
-                            <div class="column">
-                                <ul class="footer-column">
-                                    <li class="column-header">
-                                        Ressources
-                                    </li>
-                                    <li class="column-item"><a href="#">Learning</a></li>
-                                    <li class="column-item"><a href="#">Support center</a></li>
-                                    <li class="column-item"><a href="#">Frequent questions</a></li>
-                                    <li class="column-item"><a href="#">Schedule a demo</a></li>
-                                </ul>
-                            </div>
-                            <!-- Column -->
-                            <div class="column">
-                                <ul class="footer-column">
-                                    <li class="column-header">
-                                        Terms
-                                    </li>
-                                    <li class="column-item"><a href="#">Terms of Service</a></li>
-                                    <li class="column-item"><a href="#">Privacy policy</a></li>
-                                    <li class="column-item"><a href="#">SaaS services</a></li>
-                                </ul>
-                            </div>
+                </div>
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-header">
+                            <h3>Quidditch Austria</h3>
+                        </div>
+                        <ul class="link-list">
+                            <li>Österreichischer Quidditch Verband</li>
+                            <li>ZVR-Zahl: 1847937074</li>
+                            <li>Steinergasse 12</li>
+                            <li>1230 Wien</li>
+                            <li>info @ quidditch.at</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-header">
+                            <h3>Materialien</h3>
+                        </div>
+                        <ul class="link-list">
+                            <li><a href="#">Aktuelles Regelwerk</a></li>
+                            <li><a href="#">Team Quickstartguide</a></li>
+                            <li><a href="#">Referee Materialien</a></li>
+                            <li><a href="#">Meeting Protokolle</a></li>
+                            <li><a href="#">Vereins-Statuen</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="footer-column">
+                        <div class="footer-logo">
+                            <img src="{% static 'landing/images/logos/qat-white.svg' %}" alt="">
+                        </div>
+                        <div class="footer-header">
+                            <nav class="level is-mobile">
+                                <div class="level-left level-social">
+                                    <a href="https://www.facebook.com/quidditchAT/" class="level-item">
+                                        <span class="icon"><i class="fa fa-facebook"></i></span>
+                                    </a>
+                                    <a href="https://twitter.com/quidditchaut" class="level-item">
+                                        <span class="icon"><i class="fa fa-twitter"></i></span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="copyright">
+                            <span class="moto light-text">Made with <i class="fa fa-heart color-red"></i> by Jürgen.</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- /Simple light footer -->        <!-- Back To Top Button -->
-        <div id="backtotop"><a href="#"></a></div>
-{% endblock content_area %}
-        <!-- Concatenated jQuery and plugins -->
-        <script src="{% static 'js/app.js' %}"></script>
+        </div>
+    </footer>
+    <!-- /Dark footer -->
+    <!-- Back To Top Button -->
+    <div id="backtotop"><a href="#"></a></div>        <!-- Concatenated jQuery and plugins -->
+{% endblock footer %}
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-        <!-- Bulkit js -->
-        <script src="{% static 'js/main.js' %}""></script>
-        <script src="{% static 'js/landingv4.js' %}"></script>
+{% block javascript %}
+    <script src="{% static 'landing/js/app.js' %}"></script>
+
+    <!-- Bulkit js -->
+    <script src="{% static 'landing/js/agency.js' %}"></script>
+    <script src="{% static 'landing/js/contact.js' %}"></script>
+    <script src="{% static 'landing/js/main.js' %}"></script>
+    {% block extra_javascript %}{% endblock extra_javascript %}
+{% endblock javascript %}
+
 </body>
 </html>
 
