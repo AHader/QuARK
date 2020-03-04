@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
-from django.db.models import CharField, DateField, EmailField
+from django.db.models import CharField, DateField, EmailField, IntegerField
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -73,19 +73,19 @@ class User(AbstractUser):
     citizenship = CountryField(blank_label='(select citizenship)', blank=True, null=True)
     image = ImageField(_("Player profile image"), upload_to="avatars", blank=True)
     gender = CharField(choices=Gender_CHOICES, max_length=1, blank=True, null=True)
+    number = IntegerField(blank=True, null=True)
     positions = MultiSelectField(choices=Position_CHOICES, blank=True, null=True)
     certifications = MultiSelectField(choices=Certification_CHOICES, blank=True, null=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.first_name, self.last_name)
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"id": self.id})
 
-    # TODO: This is going to be one hell of inefficient in production. Cache as soon as this hurts!
     @property
     def team(self):
-        for transfer in self.transfers.order_by('-date'):
-            if transfer.state == 'a':
-                return transfer.to_team
-        return None
+        return self.transfers.get(state='a').to_team
 
     @property
     def is_new(self):

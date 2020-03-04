@@ -2,8 +2,8 @@ from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.views.generic.edit import FormView
 
-from .models import Team, Transfer
-from .froms import JoinForm, TransferForm
+from .models import Team, Transfer, Role
+from .forms import JoinForm, TransferForm
 
 
 class TeamListing(ListView):
@@ -14,6 +14,10 @@ class TeamCreate(CreateView):
     model = Team
     fields = ['name', 'ngb', 'image']
     success_url = '/'
+
+    def form_valid(self, form):
+        #Staff.objects.new(role="Founder", player=self.request.user, team=self.instance)
+        return super(TeamCreate, self).form_valid(form)
 
 
 class TeamDetail(DetailView):

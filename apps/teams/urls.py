@@ -3,7 +3,7 @@ from django.conf.urls import url
 from .views import TeamCreate, TeamDelete, TeamDetail, TeamListing, TeamUpdate, TransferCreate
 
 
-app_name = 'blog'
+app_name = 'teams'
 
 urlpatterns = [
     url(r'^$', TeamListing.as_view(), name='list'),

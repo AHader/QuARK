@@ -6,9 +6,27 @@
 
 {% block content %}
 
+    <a class="button is-primary" href="{% url 'team:transfer' team.pk %}" role="button">{% if request.user.is_new %}Join Team{% else %}Transfer{% endif %}</a>
+
 <h1>{{ team.name }}</h1>
     {% thumbnail team.image "100x100" crop="center" as im %}
         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     {% endthumbnail %}
+
+    <h3>Players</h3>
+    {% if object.active_members %}
+        <table>
+            {% for member in object.active_members %}
+                <tr><td>{% thumbnail member.image "100x100" crop="center" as im %}
+                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}</td>
+                <td><a href="{% comment %}url 'users:detail' member.id {% endcomment%}" class="list-group-item">
+                    {{ member.first_name }} {{ member.last_name }}
+                </a></td>
+                    <td>{{ member.number }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 
 {% endblock %}

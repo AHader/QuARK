@@ -83,6 +83,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "apps.users.apps.UsersConfig",
     "apps.teams.apps.TeamsConfig",
+    "apps.tournaments.apps.TournamentsConfig",
     # Your stuff: custom apps go here
 
 ]

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ tournament.name }}{% endblock %}
+
+{% block content %}
+
+    <a class="button is-primary" href="{% url 'tournaments:roster' tournament.pk %}" role="button">Participate (submit Roster)</a>
+
+    <h1>{{ tournament.name }} - {{ tournament.date }}</h1>
+    {% thumbnail tournament.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+
+    <h3>Teams</h3>
+
+
+{% endblock %}

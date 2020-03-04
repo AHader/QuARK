@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+    <a class="button is-primary" href="{% url 'tournament:create' %}" role="button">New Tournament</a>
+
+<ul>
+{% for tournament in tournament_list %}
+    <li><a href='{% url "tournament:detail" tournament.pk %}'>{{ tournament.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

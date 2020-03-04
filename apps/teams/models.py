@@ -53,6 +53,7 @@ TRANSFER_STATE_CHOICES =(
     ("r","Requested"),
     ("p","Pending Approval"),
     ("a","Approved"),
+    ("o","Old"),
 )
 
 APPROVAL_CHOICES =(
@@ -69,21 +70,39 @@ class Team(models.Model):
     )
     ngb = models.CharField(choices=NGB_CHOICES, max_length=5)
     image = ImageField(_("Team Logo"), upload_to="team_logos", blank=True)
+    members = models.ManyToManyField(User, through='Transfer', related_name='memberships')
+    staff = models.ManyToManyField(User, through='Role', related_name='roles')
+
+    @property
+    def active_members(self):
+        return User.objects.filter(
+            transfers__to_team=self,
+            transfers__state='a'
+        )
+
+    def __str__(self):
+        return self.name
 
 
-class Staff(models.Model):
+class Role(models.Model):
     name = models.CharField(
         max_length=100,
     )
     player = models.ForeignKey(User, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return "{} - {} - {}".format(self.name, self.team.name, self.player.first_name)
+
 
 class Transfer(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     player = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transfers')
-    from_ngb = models.CharField(choices=NGB_CHOICES, max_length=5, null=True, blank=True)
     to_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='transfers')
+    from_ngb = models.CharField(choices=NGB_CHOICES, max_length=5, null=True, blank=True)
     reason = models.TextField(max_length=512)
     state = models.CharField(choices=TRANSFER_STATE_CHOICES, max_length=1, default='r')
     approval = MultiSelectField(choices=APPROVAL_CHOICES, blank=True, null=True)
+
+    def __str__(self):
+        return "{} - {} - {}".format(self.to_team.name, self.player.first_name, self.state)

@@ -17,8 +17,10 @@ urlpatterns = [
     path("", HomeTemplateView.as_view(), name="home"),
     path( "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     path(settings.ADMIN_URL, admin.site.urls),
+    # TODO: the namespace inconsitencies here will drive me nuts sooner or later...
     path("users/", include("apps.users.urls", namespace="users")),
     path("teams/", include('apps.teams.urls', namespace="team")),
+    path("tournaments/", include('apps.tournaments.urls', namespace="tournaments")),
     path("accounts/", include("allauth.urls")),
     # Terms and Conditions
     path("terms/", include('termsandconditions.urls')),

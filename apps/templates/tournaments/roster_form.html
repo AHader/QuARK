@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+
+{% block title %}Roster Submission{% endblock %}
+
+{% block content %}
+
+    <h1>Transfer Request</h1>
+    <form method="post" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{ form|bulma }}
+
+        <div class="field">
+            <button type="submit" class="button is-primary">Send</button>
+        </div>
+    </form>
+{% endblock %}
