@@ -14,8 +14,6 @@ services:
     depends_on:
       - postgres
       - redis
-    expose:
-      - "5000"
     volumes:
       - /opt/media:/app/apps/media
     env_file:
@@ -48,8 +46,8 @@ services:
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=quidditch.at
       - LETSENCRYPT_EMAIL=juergen.brandl@gmail.com
-    ports:
-      - "0.0.0.0:80:80"
+    expose:
+      - "80"
       
   redis:
     image: redis:5.0
