@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ team.name }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ team.name }}</h1>
+    {% thumbnail team.image "100x100" crop="center" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+
+{% endblock %}

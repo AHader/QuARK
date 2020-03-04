@@ -29,6 +29,15 @@
                     <a href="/"><img src="{% static 'images/logos/icon_transparent.png' %}" alt=""></a>
                 </li>
 
+
+                <li class="side-icon" data-child-menu="teams-menu">
+                    <a href="{% url 'team:list' %}"><i class="sl sl-icon-people"></i></a>
+                </li>
+
+                <li class="side-icon" data-child-menu="teams-menu">
+                    <a href="{% url 'team:list' %}"><i class="sl sl-icon-trophy"></i></a>
+                </li>
+
                 <li class="side-icon" data-child-menu="settings-menu">
                     <a href="{% url 'users:detail' request.user.id %}"><i class="sl sl-icon-settings"></i></a>
                 </li>

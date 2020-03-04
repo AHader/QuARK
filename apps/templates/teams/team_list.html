@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bulma_tags %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+
+    <a class="button is-primary" href="{% url 'team:create' %}" role="button">New Team</a>
+
+<ul>
+{% for team in team_list %}
+    <li><a href='{% url "team:detail" team.pk %}'>{{ team.name }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

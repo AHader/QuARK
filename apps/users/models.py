@@ -78,3 +78,15 @@ class User(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"id": self.id})
+
+    # TODO: This is going to be one hell of inefficient in production. Cache as soon as this hurts!
+    @property
+    def team(self):
+        for transfer in self.transfers.order_by('-date'):
+            if transfer.state == 'a':
+                return transfer.to_team
+        return None
+
+    @property
+    def is_new(self):
+        return self.team is None

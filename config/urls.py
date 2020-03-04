@@ -15,13 +15,10 @@ from apps.contrib.views import HomeTemplateView
 
 urlpatterns = [
     path("", HomeTemplateView.as_view(), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
-    # Django Admin, use {% url 'admin:index' %}
+    path( "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"),
     path(settings.ADMIN_URL, admin.site.urls),
-    # User management
     path("users/", include("apps.users.urls", namespace="users")),
+    path("teams/", include('apps.teams.urls', namespace="team")),
     path("accounts/", include("allauth.urls")),
     # Terms and Conditions
     path("terms/", include('termsandconditions.urls')),

@@ -1,5 +1,11 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext_lazy as _
 
+from multiselectfield import MultiSelectField
+from sorl.thumbnail import ImageField
+
+User = get_user_model()
 
 NGB_CHOICES =(
     ("AQArg","Argentina"),
@@ -42,3 +48,42 @@ NGB_CHOICES =(
     ("VQA","Vietnam"),
     ("Other","Not listed"),
 )
+
+TRANSFER_STATE_CHOICES =(
+    ("r","Requested"),
+    ("p","Pending Approval"),
+    ("a","Approved"),
+)
+
+APPROVAL_CHOICES =(
+    ("f","FROM APPROVED"),
+    ("t","TO APPROVED"),
+    ("l","LEAGUE APPROVED"),
+    ("n","NGB APPROVED"),
+)
+
+
+class Team(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )
+    ngb = models.CharField(choices=NGB_CHOICES, max_length=5)
+    image = ImageField(_("Team Logo"), upload_to="team_logos", blank=True)
+
+
+class Staff(models.Model):
+    name = models.CharField(
+        max_length=100,
+    )
+    player = models.ForeignKey(User, on_delete=models.CASCADE)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+
+
+class Transfer(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    player = models.ForeignKey(User, on_delete=models.CASCADE, related_name='transfers')
+    from_ngb = models.CharField(choices=NGB_CHOICES, max_length=5, null=True, blank=True)
+    to_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='transfers')
+    reason = models.TextField(max_length=512)
+    state = models.CharField(choices=TRANSFER_STATE_CHOICES, max_length=1, default='r')
+    approval = MultiSelectField(choices=APPROVAL_CHOICES, blank=True, null=True)

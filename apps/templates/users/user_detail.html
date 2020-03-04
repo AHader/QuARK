@@ -5,22 +5,40 @@
 {% block title %}Player: {{ object.first_name }} {{ object.last_name }}{% endblock %}
 
 {% block content %}
-      <h2>{{ object.first_name }} {{ object.last_name }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
+    {% if object == request.user %}
+        <!-- Action buttons -->
+        <a class="button is-primary" href="{% url 'users:update' %}" role="button">My Info</a>
+        <a class="button is-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
 
-{% if object == request.user %}
-<!-- Action buttons -->
+        <!-- End Action buttons -->
+    {% endif %}
+
+    <h2>{{ object.first_name }} {{ object.last_name }}</h2>
+
+    {% if object.team %}
+    <p>Playing for <a href="{% url 'team:detail' object.team.pk %}" class="list-group-item">
+        {{ object.team.name }}
+    </a></p>
+    {% endif %}
+
     {% thumbnail object.image "100x100" crop="center" as im %}
         <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
     {% endthumbnail %}
 
-    <a class="button is-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="button is-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
+    <h3>Transfer History</h3>
+    {% if object.transfers.all %}
+        <table>
+            <tr><th>Team</th><th>Date</th><th>State</th></tr>
+            {% for transfer in object.transfers.all %}
+                <tr><td><a href="{% url 'team:detail' transfer.to_team.pk %}" class="list-group-item">
+                    {{ transfer.to_team.name }}
+                </a></td>
+                    <td>{{ transfer.date }} </td>
+                    <td>{{ transfer.state }} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
 
-<!-- End Action buttons -->
-{% endif %}
 {% endblock content %}
 
