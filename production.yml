@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 volumes:
   production_postgres_data: {}
@@ -21,7 +21,7 @@ services:
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
-    environment:  
+    environment:
       - VIRTUAL_HOST=quidditch.at
       - VIRTUAL_PORT=5000
       - LETSENCRYPT_HOST=quidditch.at
@@ -58,8 +58,8 @@ services:
     ports:
       - "5555:5555"
     command: /start-flower
-    
+
 networks:
   default:
     external:
-      name: atlas_quark-proxy
+      name: nginx-proxy
