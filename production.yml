@@ -19,13 +19,6 @@ services:
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
-    environment:  
-      - VIRTUAL_HOST=quidditch.at
-      - VIRTUAL_PORT=5000
-      - LETSENCRYPT_HOST=quidditch.at
-      - LETSENCRYPT_EMAIL=juergen.brandl@gmail.com
-    expose:
-      - "5000"
     command: /start
 
   postgres:
