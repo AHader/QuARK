@@ -62,4 +62,4 @@ services:
 networks:
   default:
     external:
-      name: quark-proxy
+      name: atlas_quark-proxy
