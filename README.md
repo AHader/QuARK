@@ -88,7 +88,7 @@ See detailed `cookiecutter-django Docker documentation`_.
 ## Docker for Windows
 
 Enable necessary Windows features (PS with admin privilegde):
-.. code-block:: bash
+
     Enable-WindowsOptionalFeature -Online -FeatureName containers –All
     Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All
 
@@ -102,7 +102,7 @@ https://docs.docker.com/docker-for-windows/install/
 
 Install from Microsoft Store (e.g. Debian)
 Add information about how to reach Docker from WSL into your ~/.bashrc:
-.. code-block:: bash
+
     echo "export DOCKER_HOST=tcp://localhost:2375" >> ~/.bashrc
     source ~/.bashrc
 
@@ -110,21 +110,21 @@ Add information about how to reach Docker from WSL into your ~/.bashrc:
 ## Getting everything to run
 
 Checkout:
-.. code-block:: bash
+
     git clone https://github.com/Brandl/QuARK.git
   
 Switch to directory and start building Docker images:
-.. code-block:: bash
+
     cd QuARK
     docker-compose -f local.yml build
 
 Start them up:
-.. code-block:: bash
+
     docker-compose -f local.yml up
 
 Connect to your local instance via http://localhost:8000
 
 
 Stop them via:
-.. code-block:: bash
+
     docker-compose -f local.ymp stop
