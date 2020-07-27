@@ -1,0 +1,188 @@
+{% extends "base_landing.html" %}
+{% load static bulma_tags %}
+
+{% block title %}Home{% endblock title %}
+
+{% block header %}
+    <div class="hero parallax is-cover is-relative is-default is-bold" data-color="#000" data-color-opacity="0.3"
+         data-background="{% static 'landing/images/banner/contact.jpg' %}">
+
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+            <div class="container">
+                <!-- Brand -->
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <img class="light-logo" src="{% static 'landing/images/logos/qat-white.svg' %}" alt="">
+                        <img class="dark-logo" src="{% static 'landing/images/logos/qat-red.svg' %}" alt="">
+                    </a>
+
+                    <!-- Responsive toggle -->
+                    <div class="custom-burger" data-target="">
+                        <a id="" class="responsive-btn" href="javascript:void(0);">
+                                <span class="menu-toggle">
+                                    <span class="icon-box-toggle">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </span>
+                        </a>
+                    </div>
+                    <!-- /Responsive toggle -->
+                </div>
+
+                <!-- Navbar menu -->
+                <div class="navbar-menu">
+                    <!-- Navbar Start -->
+
+
+                    <div class="navbar-start">
+                        <a class="navbar-item is-slide" href="/">Quidditch Austria</a>
+                        <a class="navbar-item is-slide" href="/#covid19">COVID-19 Update</a>
+             			<a class="navbar-item is-slide" href="{% url "about" %}">Kontakt</a>
+                        <a class="navbar-item is-slide" href="{% url "harassment" %}">Neue Sektion</a>
+                    </div>
+
+                    <!-- Navbar end -->
+                    <div class="navbar-end">
+                        <!-- Signup button -->
+                        <div class="navbar-item">
+                            <a id="#signup-btn" href="{% url 'account_login' %}"
+                               class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
+                                Player Area
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero image -->
+        <div id="main-hero" class="hero-body ">
+            <div class="container has-text-centered">
+                <div class="columns is-vcentered">
+                    <!-- Page Heading -->
+                    <div class="column is-6 is-offset-3 has-text-centered is-header-caption">
+                        <h1 class="title main-title subpage-title text-bold is-2">
+                            Bel&auml;stigungsrichtlinie
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Hero image -->
+    </div>
+    <!-- /Hero and nav -->
+{% endblock header %}
+
+
+{% block content %}
+<section id="services" class="section is-medium section-feature-grey">
+    <div class="container">
+        <div class="centered-title">
+            <div class="subheading dark-text">
+                <p>Inklusion ist ein zentraler Wert des Sports Quidditch. Die IQA und Quidditch Austria sind der Ansicht, dass es enorm wichtig ist, dass Quidditch-Veranstaltungen inklusive und sichere Orte für alle involvierten Personen sind. Den genauen Wortlaut der Bel&auml;stigungsrichtlinie findest du hier:</p>
+            </div>
+            <div class="action">
+                <a class="button btn-align button-cta btn-outlined raised rounded primary-btn is-bold" href="https://iqasport.org/wp-content/uploads/2020/04/IQA-Harassment-Policy-DE-letterhead.pdf">IQA Bel&auml;stigungsrichtlinie</a>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="columns">
+                <!-- Content -->
+                <div class="column is-4">
+                    <div class="service-box">
+                        <h2 class="service-title">Ansprechpersonen</h2>
+                        <div class="title-divider"></div>
+                        <p>Solltest du ein vertrauliches, pers&ouml;nliches Gespr&auml;ch w&uuml;nschen, so kannst du dich an folgende Personen wenden:</p>
+                    </div>
+                </div>
+                <!-- Icons -->
+                <div class="column is-7 is-offset-1">
+                    <div class="columns is-vcentered is-multiline">
+                        <!-- Icon block -->
+                        <div class="column is-6">
+                            <div class="agency-icon-box">
+                                <div class="box-title">Christine Berger</div>
+                                <p class="box-content dark-text">Christine ist Ansprechperson f&uuml;r Probleme mit den Steelcity Snidgets, als auch f&uuml;r Team&uuml;bergreifende</p>
+                                <br/>
+                                <div class="columns">
+                                    <div class="column is-2">
+                                        <div class="is-icon-reveal">
+                                            <i class="fa fa-phone-square fa-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <p class="box-content dark-text">+43 (0) 123 456 789</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Icon block -->
+                        <div class="column is-6">
+                            <div class="agency-icon-box">
+                                <div class="box-title">Kai Bogner</div>
+                                <p class="box-content dark-text">Kai ist Ansprechperson f&uuml;r Probleme mit den Steelcity Snidgets, als auch f&uuml;r Team&uuml;bergreifende</p>
+                                <br/>
+                                <div class="columns">
+                                    <div class="column is-2">
+                                        <div class="is-icon-reveal">
+                                            <i class="fa fa-phone-square fa-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <p class="box-content dark-text">+43 (0) 123 456 789</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Icon block -->
+                        <div class="column is-6">
+                            <div class="agency-icon-box">
+                                <div class="box-title">Some other Guy</div>
+                                <p class="box-content dark-text"></p>
+                                <br/>
+                                <div class="columns">
+                                    <div class="column is-2">
+                                        <div class="is-icon-reveal">
+                                            <i class="fa fa-phone-square fa-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <p class="box-content dark-text">+43 (0) 123 456 789</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Icon block -->
+                        <div class="column is-6">
+                            <div class="agency-icon-box">
+                                <div class="box-title">Another Guy</div>
+                                <p class="box-content dark-text"></p>
+                                <br/>
+                                <div class="columns">
+                                    <div class="column is-2">
+                                        <div class="is-icon-reveal">
+                                            <i class="fa fa-phone-square fa-lg"></i>
+                                        </div>
+                                    </div>
+                                    <div class="column is-6">
+                                        <p class="box-content dark-text">+43 (0) 123 456 789</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Icons -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}
