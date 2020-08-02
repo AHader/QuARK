@@ -4,6 +4,7 @@ volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
 
+
 services:
   django: &django
     build:
@@ -13,8 +14,8 @@ services:
     depends_on:
       - postgres
       - mailhog
-    volumes:
-      - .:/app
+#    volumes:
+#      - .:/app
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
@@ -67,3 +68,4 @@ services:
     ports:
       - "5555:5555"
     command: /start-flower
+
