@@ -1,5 +1,6 @@
 ## PROTECT Production SECRETS 
 .envs/
+.quark/
 webhook/
 
 ### Python template

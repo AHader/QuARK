@@ -41,7 +41,7 @@ COPY ./compose/local/django/celery/flower/start /start-flower
 RUN sed -i 's/\r//' /start-flower
 RUN chmod +x /start-flower
 
-COPY . /app
+# COPY . /app
 
 WORKDIR /app
 
